@@ -1,3 +1,6 @@
-.fixed {
-  position: "fixed";
+.gap-30 {
+  gap: 30px;
+}
+.gap-20 {
+  gap: 20px;
 }
