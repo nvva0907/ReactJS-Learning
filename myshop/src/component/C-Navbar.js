@@ -3,76 +3,111 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Offcanvas from "react-bootstrap/Offcanvas";
+// import Offcanvas from "react-bootstrap/Offcanvas";
 import "../css/Navbar.css";
 export function CNavbar() {
-  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  // const [showOffcanvas, setShowOffcanvas] = useState(null);
+  const links = [
+    {
+      name: "Store",
+      link: "/store",
+      canvas: "store",
+    },
+    {
+      name: "Mac",
+      link: "/mac",
+      canvas: "mac",
+    },
+    {
+      name: "iPad",
+      link: "/ipad",
+      canvas: "ipad",
+    },
+    {
+      name: "iPhone",
+      link: "/iphone",
+      canvas: "iphone",
+    },
+    {
+      name: "Watch",
+      link: "/watch",
+      canvas: "watch",
+    },
+    {
+      name: "Support",
+      link: "/support",
+      canvas: "support",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      canvas: "contact",
+    },
+  ];
+
+  // const handleOpenCanvas = (id) => {
+  //   setShowOffcanvas(id);
+  // };
+  // const handleCloseCanvas = () => {
+  //   setShowOffcanvas(null);
+  // };
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <div className="navbar-bg">
-      <Navbar expand="lg">
-        <Container className="gap-30">
-          <img src="images/logo-va.png" alt="" width={50} height={20}></img>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className=" gap-30">
-              <Link
-                to={"/"}
-                className="navbar-text"
-                onMouseEnter={() => setShowOffcanvas(true)}
-                onClick={() => setShowOffcanvas(false)}
-              >
-                Store
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                Mac
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                iPad
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                iPhone
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                Watch
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                Support
-              </Link>
-              <Link to={"/component"} className="navbar-text">
-                Contact
-              </Link>
-            </Nav>
-          </Navbar.Collapse>
+    <div>
+      <div className="navbar-bg">
+        <Navbar expand="lg">
+          <Container className="c-gap">
+            <img src="images/logo-va.png" alt="" width={50} height={20}></img>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          <div className="c-nav-icon">
-            <i class="fa-solid fa-magnifying-glass fa-sm"></i>
-            <i class="fa-brands fa-square-facebook fa-sm"></i>
-            <i class="fa-brands fa-instagram fa-sm"></i>
-            <i class="fa-brands fa-youtube fa-sm"></i>
-            <i class="fa-brands fa-tiktok fa-xs"></i>
-          </div>
-        </Container>
-      </Navbar>
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="c-gap c-collapse">
+                {links.map((item, index) => (
+                  <div>
+                    <Link
+                      to={item.link}
+                      className="navbar-text"
+                      onClick={() => setCollapsed(false)}
+                      // onMouseEnter={() => handleOpenCanvas(item.canvas)}
+                      // onClick={() => handleCloseCanvas()}
+                    >
+                      {item.name}
+                    </Link>
+                  </div>
+                ))}
+              </Nav>
+            </Navbar.Collapse>
 
-      <Offcanvas
-        className="c-offcanvas"
-        show={showOffcanvas}
-        onHide={() => setShowOffcanvas(false)}
-        onMouseLeave={() => setShowOffcanvas(false)}
-        backdrop={false}
-        placement="top"
-        style={{ top: "50px" }}
-      >
-        <div className="cflex">
+            <div className="c-nav-icon">
+              <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+              <i class="fa-brands fa-square-facebook fa-sm"></i>
+              <i class="fa-brands fa-instagram fa-sm"></i>
+              <i class="fa-brands fa-youtube fa-sm"></i>
+              <i class="fa-brands fa-tiktok fa-xs"></i>
+            </div>
+          </Container>
+        </Navbar>
+      </div>
+
+      {/* canvas */}
+      {/* <div>
+        <Offcanvas
+          className="offcanvas"
+          show={showOffcanvas === "store"}
+          onHide={() => setShowOffcanvas(false)}
+          onMouseLeave={() => setShowOffcanvas(false)}
+          backdrop={false}
+          placement="top"
+        >
           <div>
             <Offcanvas.Header>
               <Offcanvas.Title>Store</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>Danh sách store trên toàn quốc</Offcanvas.Body>
           </div>
-        </div>
-      </Offcanvas>
+        </Offcanvas>
+      </div> */}
     </div>
   );
 }

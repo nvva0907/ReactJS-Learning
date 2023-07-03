@@ -9,9 +9,15 @@ export function Home() {
         <CNavbar></CNavbar>
       </div>
 
-      <div style={{paddingTop:"50px"}}>
+      <div
+        style={{
+          paddingTop: "50px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/store" element={<LandingPage />} />
           <Route path="/component" element={<AllComponent />} />
         </Routes>
       </div>
