@@ -5,10 +5,9 @@ import { LandingPage } from "./LandingPage";
 export function Home() {
   return (
     <div>
-      <div style={{ position: "fixed", width: "100vw" }}>
+      <div style={{ position: "fixed", zIndex: 9999, width: "100vw" }}>
         <CNavbar></CNavbar>
       </div>
-
       <div
         style={{
           paddingTop: "50px",
